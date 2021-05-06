@@ -4,11 +4,24 @@
 
     </head>
     <body>
-        <h1>Hello html!</h1>
         <script>
-            alert(
-                "Hello"
-            );
+
+            const getRandomNumber = ({ min, max }) => {
+                const range = max - min;
+                const rand = Math.random() * range;
+                return rand + min;
+            };
+
+            const randomCoordinates = {
+                lat: getRandomNumber({ min: -60, max: 60 }),
+                long: getRandomNumber({ min: -180, max: 180 }),
+                zoom: getRandomNumber({ min: 2, max: 16 }),
+            }            
+
+            let url = `https://www.google.com/maps/@${randomCoordinates.lat},${randomCoordinates.long},${randomCoordinates.zoom}z/data=!5m1!1e4`;
+
+            window.location.href = url;
+            
         </script>
     </body>
 </html>
